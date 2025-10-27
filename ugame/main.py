@@ -11,6 +11,10 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     pygame.display.set_caption("Asteroids")
     
+    # Create clock and delta time variables
+    clock = pygame.time.Clock()
+    dt = 0
+    
     # Game loop
     while True:
         # Check for quit event
@@ -23,6 +27,9 @@ def main():
         
         # Update the display
         pygame.display.flip()
+        
+        # Control frame rate and calculate delta time
+        dt = clock.tick(60) / 1000  # Convert milliseconds to seconds
 
 if __name__ == "__main__":
     main()
