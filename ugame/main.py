@@ -12,6 +12,13 @@ def main():
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     pygame.display.set_caption("Asteroids")
     
+    # Create sprite groups
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    
+    # Set groups as containers for Player
+    Player.containers = (updatable, drawable)
+    
     # Create player in the middle of the screen
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
     
@@ -26,14 +33,15 @@ def main():
             if event.type == pygame.QUIT:
                 return
         
-        # Update player (handle rotation input)
-        player.update(dt)
+        # Update all updatable objects
+        updatable.update(dt)
         
         # Fill screen with black
         screen.fill("black")
         
-        # Draw the player
-        player.draw(screen)
+        # Draw all drawable objects
+        for obj in drawable:
+            obj.draw(screen)
         
         # Update the display
         pygame.display.flip()
