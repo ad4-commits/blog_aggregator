@@ -9,3 +9,4 @@ ASTEROID_KINDS = 3
 ASTEROID_SPAWN_RATE = 0.5  # seconds between spawns
 SHOT_RADIUS = 5
 PLAYER_SHOOT_SPEED = 500
+PLAYER_SHOOT_COOLDOWN = 0.3  # seconds between shots
