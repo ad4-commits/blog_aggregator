@@ -26,6 +26,9 @@ def main():
             if event.type == pygame.QUIT:
                 return
         
+        # Update player (handle rotation input)
+        player.update(dt)
+        
         # Fill screen with black
         screen.fill("black")
         
