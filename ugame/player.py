@@ -1,6 +1,7 @@
 import pygame
 from circleshape import CircleShape
 from constants import *
+from shot import Shot
 
 class Player(CircleShape):
     def __init__(self, x, y):
@@ -25,6 +26,12 @@ class Player(CircleShape):
         forward = pygame.Vector2(0, 1).rotate(self.rotation)
         self.position += forward * PLAYER_SPEED * dt
 
+    def shoot(self):
+        # Create shot at player position
+        shot = Shot(self.position.x, self.position.y)
+        # Set shot velocity in direction player is facing
+        shot.velocity = pygame.Vector2(0, 1).rotate(self.rotation) * PLAYER_SHOOT_SPEED
+
     def update(self, dt):
         keys = pygame.key.get_pressed()
 
@@ -41,3 +48,6 @@ class Player(CircleShape):
             # Move backward (negative direction)
             forward = pygame.Vector2(0, 1).rotate(self.rotation)
             self.position -= forward * PLAYER_SPEED * dt
+        if keys[pygame.K_SPACE]:
+            # Shoot bullet
+            self.shoot()
