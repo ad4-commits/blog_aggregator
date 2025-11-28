@@ -28,3 +28,13 @@ A powerful command-line RSS feed aggregator built with Go and PostgreSQL. Collec
 
 ```bash
 go install github.com/ad4-commits/blog_aggregator@latest
+
+### 1. Database Setup
+
+First, ensure PostgreSQL is running and create the database:
+
+```bash
+# Create the database (use postgres user)
+sudo -u postgres createdb gator
+
+# If the database already exists, you'll see an error but that's fine
